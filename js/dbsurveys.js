@@ -35,4 +35,55 @@ db.surveys
     .then(function (survey) {
         console.log ("Truncated");
 });
+
+/* Count */
+db.surveys
+    .count()
+    .then(function (survey) {
+        console.log ("Counted");
+});
+
+/* getAll */
+db.surveys
+    //.each(callbackFn)
+    .toArray()
+    .then(function (survey) {
+        console.log ("Got all columns");
+});
+
+
+/* getActive */
+db.surveys
+    .where('status')
+    .equals('active')
+    .toArray()
+    .then(function (survey) {
+        console.log ("Got from active status");
+});
+
+/* getById */
+db.surveys
+    //.each(callbackFn)
+    .where('confirmation')
+    .equals(1)
+    .toArray()
+    .then(function (survey) {
+        console.log ("Got from id");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
