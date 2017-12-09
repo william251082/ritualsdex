@@ -1,15 +1,15 @@
-/*
-// Find some old friends
-	db.friends
-		.where('age')
-		.above(75)
-		.each (function (friend) {
-			console.log (friend.name);
-		});
+/* Drop */
+db.images
+    .where("thumb").anyOf("Normal", "discarded")
+    .or("created").below("2014-02-01")
+    .delete()
+    .then(function (image) {
+        console.log ("Successfully deleted items");
+});
 
-	// or make a new one
-	db.friends.add({
-		name: 'Camilla',
-		age: 25
-	});
-	*/
+/* Truncate */
+db.images
+    .clear()
+    .then(function (image) {
+        console.log ("Truncated");
+});
