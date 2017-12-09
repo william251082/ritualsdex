@@ -1,46 +1,31 @@
-/*
-// Populate Survey table
-db.transaction('rw', db.surveys, function () {
-
-    db.surveys.add({
-        questionlist_id: "Zlatan",
-        name: "ibra",
-        type: "Normal",
-        location_id: "Stockholm"
-    });
-    //Sample Query
-    db.surveys.where("type").startsWith("Normal")
-        .or("location_id").anyOf (["Malmö", "Stockholm", "Barcelona"])
-        .each(function (survey) {
-            console.log("Found user: " + survey.name);
-        });
-
-}).catch (function (e) {
-    console.error(e.stack);
-});
-*/
-
 /* Drop */
 db.surveys
     .where("type").anyOf("Normal", "discarded")
     //.or("date").below("2014-02-01")
     .delete()
     .then(function (survey) {
-        console.log ("Successfully deleted items");
+        console.log ("Successfully deleted surveys items");
 });
 
 /* Truncate */
 db.surveys
     .clear()
     .then(function (survey) {
-        console.log ("Truncated");
+        console.log ("Surveys Truncated");
 });
 
 /* Count */
 db.surveys
     .count()
     .then(function (survey) {
-        console.log ("Counted");
+        console.log ("Surveys Counted");
+});
+
+/* Count */
+db.surveys
+    .count()
+    .then(function (survey) {
+        console.log ("Surveys Counted");
 });
 
 /* getAll */
@@ -48,7 +33,7 @@ db.surveys
     //.each(callbackFn)
     .toArray()
     .then(function (survey) {
-        console.log ("Got all columns");
+        console.log ("Got all surveys columns");
 });
 
 
@@ -88,7 +73,7 @@ db.surveys
     .equals(1)
     .toArray()
     .then(function (survey) {
-        console.log ("Got from id");
+        console.log ("Got surveys by id");
 });
 
     // Populate Survey table
@@ -119,6 +104,27 @@ db.surveys
     console.log ("Nothing was updated - there were no survey with primary key: closed");
 });
 
+/*
+// Populate Survey table
+db.transaction('rw', db.surveys, function () {
+
+    db.surveys.add({
+        questionlist_id: "Zlatan",
+        name: "ibra",
+        type: "Normal",
+        location_id: "Stockholm"
+    });
+    //Sample Query
+    db.surveys.where("type").startsWith("Normal")
+        .or("location_id").anyOf (["Malmö", "Stockholm", "Barcelona"])
+        .each(function (survey) {
+            console.log("Found user: " + survey.name);
+        });
+
+}).catch (function (e) {
+    console.error(e.stack);
+});
+*/
 
 
 
